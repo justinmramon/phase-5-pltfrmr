@@ -16,11 +16,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_10_074950) do
 
   create_table "games", force: :cascade do |t|
     t.string "title"
-    t.string "developer"
-    t.date "release_date"
-    t.string "synopsis"
+    t.string "genre"
+    t.integer "metacritic"
+    t.string "platform"
     t.integer "playtime"
-    t.string "cover"
+    t.date "released"
+    t.string "esrb_rating"
+    t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
