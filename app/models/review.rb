@@ -3,5 +3,5 @@ class Review < ApplicationRecord
   belongs_to :game
 
   validates :liked, presence: true
-  validates :comment, presnece: true
+  validates :comment, presence: true
 end
