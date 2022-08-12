@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   resources :reviews
   resources :games
   resources :users
-  get '/hello', to: 'application#hello_world'
+  
+  post "/login", to: "sessions#create"
+  get "/me", to: "users#show"
+  delete "/logout", to: "sessions#destroy" 
+  post "/signup", to: "users#create"
 
   get '*path',
       to: 'fallback#index',
