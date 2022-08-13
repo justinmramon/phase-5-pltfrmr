@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import loginImage from '../assets/login image option 3.jpeg';
-import CreateAccount from './CreateAccount';
 import { Link, useNavigate } from 'react-router-dom';
 
 
 function LoginForm() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [showCreateAccount, setShowCreateAccount] = useState("")
 
     const navigate = useNavigate()
 
@@ -21,8 +19,6 @@ function LoginForm() {
             body: JSON.stringify({ username, password })
         }).then (navigate('/home'))
     }
-
-    function handleCreateAccount(){}
 
     return (
         <div className='grid grid-cols-1 sm:grid-cols-2 h-screen w-full'>
