@@ -1,10 +1,15 @@
-import React, { useState } from 'react'
-import loginImage from '../assets/login image option 3.jpeg'
+import React, { useState } from 'react';
+import loginImage from '../assets/login image option 3.jpeg';
+import CreateAccount from './CreateAccount';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 function LoginForm() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [showCreateAccount, setShowCreateAccount] = useState("")
+
+    const navigate = useNavigate()
 
     function handleSubmit(event){
         event.preventDefault();
@@ -14,8 +19,10 @@ function LoginForm() {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({ username, password })
-        })
+        }).then (navigate('/home'))
     }
+
+    function handleCreateAccount(){}
 
     return (
         <div className='grid grid-cols-1 sm:grid-cols-2 h-screen w-full'>
@@ -49,7 +56,15 @@ function LoginForm() {
                                 <input className='mr-2' type="checkbox" />Remember Me</p>
                             <p>Forgot Password?</p>
                         </div>
-                        <button className='w-full my-5 py-2 bg-teal-400 shadow-lg shadow-teal-400/50 hover:shadow-teal-500/40 text-white font-semibold rounded-lg'>Sign In</button>
+                        <button className='w-full my-5 py-2 bg-sky-400 shadow-lg shadow-sky-400/50 hover:shadow-teal-500/40 text-white font-semibold rounded-lg'>Sign In</button>
+                        <div className='flex justify-center text-gray-400 py-2'>
+                        <p className="text-center">Don't have an account?</p>
+                        </div>
+                        <div>
+                        <Link className='flex justify-center' to={'/signup'}>
+                        <button className='w-[50%] my-5 p-2 bg-sky-400 shadow-lg shadow-sky-400/50 hover:shadow-teal-500/40 text-white font-semibold rounded-lg'>Create Account</button>
+                        </Link>
+                        </div>
                 </form>
             </div>
         </div>
