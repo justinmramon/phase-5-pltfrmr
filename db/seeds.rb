@@ -28,7 +28,7 @@ get_games()
 
 puts "Seeding Users..."
 10.times do
-    User.create(email: Faker::Internet.email, username: Faker::Internet.username(specifier: 5..12), password_digest: Faker::Internet.password(min_length: 10, max_length: 20, mix_case: true, special_characters: true))
+    User.create(email: Faker::Internet.email, username: Faker::Internet.username(specifier: 5..12), password_digest: Faker::Internet.password)
 end
 
 puts "Creating Reviews..."

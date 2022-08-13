@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import createAccountImage from '../assets/create account image 1.jpg'
+import createAccountImage from '../assets/login failed option 2.jpeg'
 
 
-function CreateAccount() {
+function CreateAccount({ setUser }) {
     const [email, setEmail] = useState("")
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
@@ -22,7 +22,8 @@ function CreateAccount() {
                 password,
                 passwordConfirmation: passwordConfirmation,
             })
-        })
+        }).then(response => response.json())
+        .then(user => setUser(user))
     }
 
     return(
@@ -73,7 +74,7 @@ function CreateAccount() {
                             className='rounded-lg bg-gray-700 mt-2 p-2 focus:border-blue-600 focus:bg-gray-800 focus:outline-none'  
                             type="password" />
                         </div>
-                        <button className='w-full my-5 py-2 bg-teal-400 shadow-lg shadow-teal-400/50 hover:shadow-teal-500/40 text-white font-semibold rounded-lg'>Register</button>
+                        <button className='w-full my-5 py-2 bg-cyan-400 shadow-lg shadow-cyan-400/50 hover:shadow-teal-500/40 text-white font-semibold rounded-lg'>Register</button>
                 </form>
             </div>
         </div>
