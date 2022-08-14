@@ -11,24 +11,14 @@ function NavBar({ user, setUser }) {
 
 
   function handleLogoutClick() {
-    fetch("/logout", { method: "DELETE" }).then((r) => {
-      if (r.ok) {
+    fetch("/logout", { method: "DELETE" }).then((response) => {
+      if (response.ok) {
         setUser(null);
       }
     });
   }
 
-//   <nav className='navbar'>
-//         <div>
-//         <Link to="/">Home</Link>
-//     </div>
-//     <div> {user ? ( <Link to="/" onClick={ handleLogoutClick }>Logout</Link> ) : ( 
-//     <div>
-//         <Link to="/signup">Create Account</Link>
-//         <Link to="/login">Login</Link>
-//     </div> )}
-//     </div>
-//     </nav>
+
 
   return (
     <nav>
@@ -39,9 +29,7 @@ function NavBar({ user, setUser }) {
                 <li className='p-4 bg-white'>Games</li>
                 <li className='p-4 bg-white'>Lists</li>
                 <li className='p-4 bg-white'>Users</li>
-                <li>
-                {user ? ( <li className='p-4'><Link to="/" onClick={ handleLogoutClick }>Logout</Link></li> ) : ( <li className='p-4 bg-white'><Link to="/signup">Create Account</Link><Link className='p-4 bg-white' to="/login">Login</Link></li>)}
-                </li>
+                <li className='p-4 bg-white cursor-pointer' onClick={ handleLogoutClick }>Logout</li>
             </ul>
             {/* <div>
                 {!nav ? <AiOutlineClose size={ 20 } /> : <AiOutlineMenu size={ 20 } /> }

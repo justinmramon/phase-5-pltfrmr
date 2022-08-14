@@ -1,24 +1,31 @@
-import React, { useState } from 'react';
+import { useState } from "react";
 import LoginForm from "./LoginForm";
 import CreateAccount from "./CreateAccount";
 
-function Login({ setUser }) {
-    const [showLogin, setShowLogin] = useState(true);
-  
-    return (
-      <wrapper>
-        {showLogin ? (
-          <div>
-            <LoginForm />
-          </div>
-        ) : (
-          <div>
-            <CreateAccount setUser={ setUser } />
-          </div>
-        )}
-      </wrapper>
-    );
-  }
+function Login({ onLogin }) {
+  const [showLogin, setShowLogin] = useState(true);
 
-  export default Login;
-  
+  return (
+    <div>
+      {showLogin ? (
+        <>
+          <LoginForm onLogin={onLogin} />
+          <p>
+            Don't have an account? &nbsp;
+            <button color="secondary" onClick={() => setShowLogin(false)}>Sign Up</button>
+          </p>
+        </>
+      ) : (
+        <>
+          <CreateAccount onLogin={onLogin} />
+          <p>
+            Already have an account? &nbsp;
+            <button color="secondary" onClick={() => setShowLogin(true)}>Log In</button>
+          </p>
+        </>
+      )}
+    </div>
+  );
+}
+
+export default Login;

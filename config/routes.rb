@@ -2,12 +2,11 @@ Rails.application.routes.draw do
   resources :playlists
   resources :reviews
   resources :games
-  resources :users
   
-  post "/login", to: "sessions#create"
   get "/me", to: "users#show"
-  delete "/logout", to: "sessions#destroy" 
   post "/signup", to: "users#create"
+  post "/login", to: "sessions#create"
+  delete "/logout", to: "sessions#destroy" 
 
   get '*path',
       to: 'fallback#index',

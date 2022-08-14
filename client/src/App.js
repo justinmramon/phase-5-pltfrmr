@@ -1,40 +1,66 @@
 import React, { useState, useEffect } from 'react';
-import Home from "./components/Home";
-import NavBar from "./components/NavBar";
 import Login from "./components/Login";
-import CreateAccount from "./components/CreateAccount";
-import { Routes, Route } from 'react-router-dom';
-
+import NavBar from "./components/NavBar";
+import Games from "./components/Games";
+import { Router, Routes, Route } from 'react-router-dom';
 
 function App() {
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
-    fetch("/me").then((response) => {
-      if (response.ok) {
-        response.json().then((user) => setUser(user));
+    // auto-login
+    fetch("/me").then((r) => {
+      if (r.ok) {
+        r.json().then((user) => setUser(user));
       }
     });
-  }, [])
+  }, []);
+
+  if (!user) return <Login onLogin={setUser} />;
 
   return (
-<div>
-    <NavBar user={user} setUser={setUser} />
-    <div className="content-wrapper">
-      {user ? (
+    <>
+      <NavBar user={user} setUser={setUser} />
+      <main>
         <Routes>
-          <Route path="/" element={ <Home user={user} /> } />
+          <Route path="/" element={ <Games user={user} /> } />
         </Routes>
-      ) : (
-        <Routes>
-          <Route path="/" element={ <Home /> } />
-          <Route path="/signup" element={ <CreateAccount setUser={setUser} /> } />
-          <Route path="/login" element={ <Login setUser={setUser} /> } />
-        </Routes>
-      )}
-    </div>
-  </div>
+      </main>
+    </>
   );
-  }
+}
 
 export default App;
+
+
+// function App() {
+//   const [user, setUser] = useState(null)
+
+//   useEffect(() => {
+//     fetch("/me").then((response) => {
+//       if (response.ok) {
+//         response.json().then((user) => setUser(user));
+//       }
+//     });
+//   }, [])
+
+//   return (
+// <div>
+//     <NavBar user={user} setUser={setUser} />
+//     <Wrapper>
+//       {user ? (
+//         <Routes>
+//           <Route path="/" element={ <Games user={user} /> } />
+//         </Routes>
+//       ) : (
+//         <Routes>
+//           <Route path="/signup" element={ <CreateAccount setUser={setUser} /> } />
+//           <Route path="/login" element={ <LoginForm setUser={setUser} /> } />
+//         </Routes>
+//       )}
+//     </Wrapper>
+//   </div>
+//   );
+//   }
+
+// export default App;
