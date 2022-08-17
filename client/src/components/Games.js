@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import GamesCard from './GamesCard';
 
 function Games(){
     const [games, setGames] = useState([])
@@ -10,11 +11,11 @@ function Games(){
     }, [])
 
     return(
-        <div>
+        <ul className='flex'>
             {games.map((game) => {
-                return <div>{ game.title }</div>
+                return <GamesCard title={ game.title } image={ game.image } genre={ game.genre } platform={ game.platform } playtime={ game.playtime } released={ game.released } esrb_rating={ game.esrb_rating } />
             })}
-        </div>
+        </ul>
     )
 }
 
