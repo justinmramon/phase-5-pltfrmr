@@ -13,11 +13,11 @@ def get_games
     games_array.each do |g|
         Game.create(
             title: g["name"],
-            genre: g["genres"],
+            genre: g["genres"][0]["name"],
             metacritic: g["metacritic"],
-            platform: g["parent_platforms"],
+            platform: g["parent_platforms"][0]["name"],
             playtime: g["playtime"],
-            esrb_rating: g["esrb_rating"],
+            esrb_rating: g["esrb_rating"]["name"],
             image: g["background_image"],
             released: g["released"]
         )

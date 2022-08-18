@@ -11,11 +11,13 @@ function Games(){
     }, [])
 
     return(
-        <ul className='flex'>
-            {games.map((game) => {
-                return <GamesCard title={ game.title } image={ game.image } genre={ game.genre } platform={ game.platform } playtime={ game.playtime } released={ game.released } esrb_rating={ game.esrb_rating } />
-            })}
-        </ul>
+        <div className='p-5 bg-inherit'>
+            <div className='grid grid-cols-3'>
+                {games.map((game) => {
+                    return <GamesCard key={game.id} title={ game.title } image={ game.image } genre={ game.genre} platform={ game.platform } playtime={ game.playtime } released={ game.released } esrb_rating={ game.esrb_rating } />
+                })}
+            </div>
+        </div>
     )
 }
 
