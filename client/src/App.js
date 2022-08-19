@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Login from "./components/Login";
 import NavBar from "./components/NavBar";
 import Games from "./components/Games";
+import GamesPage from "./components/GamesPage";
 import { Router, Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={ <Games user={user} /> } />
+          <Route path="/games/:id" element={ <GamesPage /> } />
         </Routes>
       </main>
     </>
