@@ -11,10 +11,10 @@ function Games(){
     }, [])
 
     return(
-        <div className='p-5 bg-inherit'>
-            <div className='grid grid-cols-3'>
+        <div className=''>
+            <div className=''>
                 {games.map((game) => {
-                    return <GamesCard key={game.id} title={ game.title } image={ game.image } genre={ game.genre} platform={ game.platform } playtime={ game.playtime } released={ game.released } esrb_rating={ game.esrb_rating } />
+                    return <GamesCard key={game.id} game={ game } />
                 })}
             </div>
         </div>

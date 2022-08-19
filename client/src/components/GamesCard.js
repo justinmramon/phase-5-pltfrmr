@@ -1,21 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 
-function GamesCard({ title, image, genre, platform, playtime, released, esrb_rating }){
+function GamesCard({ key, game }){
 
-    // const destructuredGenre = genre?.map((entry) => entry)
-    // console.log(destructuredGenre)
+    const navigate = useNavigate();
+    const handleClick = () => {
+        navigate(`/games/${key}`,  { replace: true, state: game })
+    }
 
     return (
-            <div className='flex flex-col bg-white rounded-lg shadow-md w-full m-6 overflow-x-scroll sm:w-80'>
-                <h1>{ title }</h1>
-                <img className='grid grid-cols-3 sm:grid-cols-2 h-full items-center' src={ image } alt='' />
-                <p>{ genre }</p>
-                <p>{ platform }</p>
-                <p>{ playtime} hours</p>
-                <p>{ released }</p>
-                <p>{ esrb_rating }</p>
+            <div className='' onClick={ handleClick }>
+                <h1>{ game.title }</h1>
+                <img className='' src={ game.image } alt='' />
+                <p>{ game.classNamegenre }</p>
+                <p>{ game.platform }</p>
+                <p>{ game.playtime} hours</p>
+                <p>{ game.released }</p>
+                <p>{ game.esrb_rating }</p>
             </div>
     )
 }
