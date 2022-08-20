@@ -1,17 +1,23 @@
 class ReviewsController < ApplicationController
-    before_action :set_review, only: [:show, :create, :update, :destroy]
+    before_action :set_review, only: [:show, :update, :destroy]
 
     def index
         render json: Review.all 
     end
 
-    def show
-        render json: @review 
+    # def show
+    #     render json: @review 
+    # end
+
+    def showReviews
+        game = Game.find(params[:id])
+        reviews = game.reviews
+        render json: reviews
     end
 
     def create
-        Review.create!(review_params)
-        render json: @review, status: :created
+        review = Review.create!(review_params)
+        render json: review, status: :created
     end
 
     def update
@@ -32,7 +38,9 @@ class ReviewsController < ApplicationController
     end
 
     def review_params
-        params.permit(:user_id, :game_id, :liked, :comment)
+        params.permit(:user_id, :game_id, :comment, :liked)
     end
+
+    # ^^^^ liked?
 
 end

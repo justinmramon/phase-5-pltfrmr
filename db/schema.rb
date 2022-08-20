@@ -15,7 +15,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_10_074950) do
   enable_extension "plpgsql"
 
   create_table "games", force: :cascade do |t|
-    t.integer "api_id"
     t.string "title"
     t.string "genre"
     t.integer "metacritic"

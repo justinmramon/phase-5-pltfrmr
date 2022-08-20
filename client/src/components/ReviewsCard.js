@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react';
 
-function ReviewsCard() {
+function ReviewsCard({ review, user }) {
 
-    useEffect(() => {
-        fetch(`/reviews`)
-        .then((response) => response.json())
-        .then((data) => console.log(data))
-    }, [])
+    
 
     return (
-        <div></div>
+        <div>
+            <div>
+                <p>{ review.user.username }</p>
+                <p>{ review.comment }</p>
+                <p>{ review.liked }</p>
+            </div>
+        </div>
     )
 }
 
