@@ -36,7 +36,7 @@ function GamesPage({ user }){
           },
         body: JSON.stringify(reviewData)})
         .then((response) => response.json())
-        .then((data) => setReviews([...reviews, data]))
+        .then((data) => setReviews([data, ...reviews]))
     }
 
     const handleSubmit = (event) => {
@@ -52,7 +52,7 @@ function GamesPage({ user }){
     return(
         <div>
             <div>
-                <h1 className='text-4xl'> { oneGame.title } </h1>
+                <h1 className='text-4xl font-bold'> { oneGame.title } </h1>
                     <form onSubmit={ handleSubmit }>
                         <label>Leave A Comment</label>
                         <input onChange={ handleChange } type='text'></input>

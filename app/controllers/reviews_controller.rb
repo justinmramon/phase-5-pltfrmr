@@ -2,7 +2,7 @@ class ReviewsController < ApplicationController
     before_action :set_review, only: [:show, :update, :destroy]
 
     def index
-        render json: Review.all 
+        render json: Review.all
     end
 
     # def show
