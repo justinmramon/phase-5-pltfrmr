@@ -1,10 +1,12 @@
 class PlaylistsController < ApplicationController
+  before_action :set_game, only: [:show]
 
     def index
         render json: Playlist.all
     end
 
     def show
+      render json: @playlist
     end
 
     def create
@@ -22,7 +24,7 @@ class PlaylistsController < ApplicationController
     private
 
     def set_playlist
-      @playlistlist = Playlist.find(params[:id])
+      @playlist = Playlist.find(params[:id])
     end
 
 

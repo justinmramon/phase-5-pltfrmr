@@ -3,6 +3,7 @@ import Login from "./components/Login";
 import NavBar from "./components/NavBar";
 import Games from "./components/Games";
 import GamesPage from "./components/GamesPage";
+import UserList from "./components/UserList";
 import { Router, Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
         <Routes>
           <Route path="/" element={ <Games user={user} /> } />
           <Route path="/games/:id" element={ <GamesPage user={ user } /> } />
+          <Route path="/users" element={ <UserList user={ user } /> } />
         </Routes>
       </main>
     </>

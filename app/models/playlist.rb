@@ -1,6 +1,6 @@
 class Playlist < ApplicationRecord
+  has_many :playlist_games
   belongs_to :user
-  belongs_to :game
 
-  validates :game_id, uniqueness: { scope: :user_id }
+  has_many :games, through: :playlist_games
 end

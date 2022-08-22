@@ -31,9 +31,18 @@ puts "Seeding Users..."
     User.create(email: Faker::Internet.email, username: Faker::Internet.username(specifier: 5..12), password_digest: Faker::Internet.password)
 end
 
-puts "Creating Reviews..."
+puts "Seeding Reviews..."
 500.times do
     Review.create(comment: Faker::TvShows::Seinfeld.quote, liked: [true, false].sample, user_id: User.all.ids.sample, game_id: Game.all.ids.sample)
 end
 
+# needs to seed games for each user 
+puts "Seeding Playlists..."
+10.times do 
+    Playlist.create(user_id: User.all.ids.sample, title: Faker::Music::Prince.song, description: Faker::Music::Prince.lyric)
+end
 
+puts "Seeding Playlist Games..."
+30.times do
+    PlaylistGame.create(game_id: Game.all.ids.sample, playlist_id: Playlist.all.ids.sample)
+end

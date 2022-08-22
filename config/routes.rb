@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :playlist_games
   resources :playlists
   resources :reviews
   resources :games
@@ -8,6 +9,7 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy" 
   get "/games/:id/reviews", to: "reviews#showReviews"
+  get "/users", to: "users#index"
 
   get '*path',
       to: 'fallback#index',

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_10_074950) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_22_155620) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -27,14 +27,21 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_10_074950) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "playlist_games", force: :cascade do |t|
+    t.bigint "game_id", null: false
+    t.bigint "playlist_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_playlist_games_on_game_id"
+    t.index ["playlist_id"], name: "index_playlist_games_on_playlist_id"
+  end
+
   create_table "playlists", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "game_id", null: false
     t.string "title"
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["game_id"], name: "index_playlists_on_game_id"
     t.index ["user_id"], name: "index_playlists_on_user_id"
   end
 
@@ -57,7 +64,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_10_074950) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "playlists", "games"
+  add_foreign_key "playlist_games", "games"
+  add_foreign_key "playlist_games", "playlists"
   add_foreign_key "playlists", "users"
   add_foreign_key "reviews", "games"
   add_foreign_key "reviews", "users"
