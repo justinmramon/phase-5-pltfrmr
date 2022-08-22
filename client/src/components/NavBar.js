@@ -24,7 +24,6 @@ function NavBar({ user, setUser }) {
             <ul className='flex'>
                 <li className='p-4 bg-white'><Link to="/">Home</Link></li>
                 <li className='p-4 bg-white'>Games</li>
-                <li className='p-4 bg-white'>Lists</li>
                 <li className='p-4 bg-white'>Users</li>
                 <li className='p-4 bg-white cursor-pointer' onClick={ handleLogoutClick }>Logout</li>
             </ul>
