@@ -15,16 +15,14 @@ function NavBar({ user, setUser }) {
     });
   }
 
-
-
   return (
     <nav>
         <div className=''>
             <h1 className='w=full text-5xl font-bold text-sky-500 text-ellipsis'>PLTFRMR</h1>
             <ul className='flex'>
                 <li className='p-4 bg-white'><Link to="/">Home</Link></li>
-                <li className='p-4 bg-white'>Games</li>
-                <li className='p-4 bg-white'><Link to="/users">Users</Link></li>
+                <li className='p-4 bg-white'><Link to="/games">Games</Link></li>
+                <li className='p-4 bg-white'><Link to="/users">Members</Link></li>
                 <li className='p-4 bg-white cursor-pointer' onClick={ handleLogoutClick }>Logout</li>
             </ul>
         </div>

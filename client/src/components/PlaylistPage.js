@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import GamesCard from "./GamesCard"
 
-function PlaylistPage({playlist_game}){
+function PlaylistPage({ playlist_game }){
     const [games, setGames] = useState([]);
 
     useEffect(() => {
@@ -11,7 +11,6 @@ function PlaylistPage({playlist_game}){
     },[])
 
     const gameToDisplay = games.filter(game => parseInt(game.id) === parseInt(playlist_game.id))
-
 
     return(
         <ul>

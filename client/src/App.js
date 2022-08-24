@@ -4,6 +4,7 @@ import NavBar from "./components/NavBar";
 import Games from "./components/Games";
 import GamesPage from "./components/GamesPage";
 import UserList from "./components/UserList";
+import Home from "./components/Home";
 import { Router, Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -11,9 +12,9 @@ function App() {
 
   useEffect(() => {
     // auto-login
-    fetch("/me").then((r) => {
-      if (r.ok) {
-        r.json().then((user) => setUser(user));
+    fetch("/me").then((response) => {
+      if (response.ok) {
+        response.json().then((user) => setUser(user));
       }
     });
   }, []);
@@ -25,7 +26,8 @@ function App() {
       <NavBar user={user} setUser={setUser} />
       <main>
         <Routes>
-          <Route path="/" element={ <Games user={user} /> } />
+          <Route path="/" element={ <Home user={ user } /> } />
+          <Route path="/games" element={ <Games user={ user } /> } />
           <Route path="/games/:id" element={ <GamesPage user={ user } /> } />
           <Route path="/users" element={ <UserList user={ user } /> } />
         </Routes>
@@ -35,36 +37,3 @@ function App() {
 }
 
 export default App;
-
-
-// function App() {
-//   const [user, setUser] = useState(null)
-
-//   useEffect(() => {
-//     fetch("/me").then((response) => {
-//       if (response.ok) {
-//         response.json().then((user) => setUser(user));
-//       }
-//     });
-//   }, [])
-
-//   return (
-// <div>
-//     <NavBar user={user} setUser={setUser} />
-//     <Wrapper>
-//       {user ? (
-//         <Routes>
-//           <Route path="/" element={ <Games user={user} /> } />
-//         </Routes>
-//       ) : (
-//         <Routes>
-//           <Route path="/signup" element={ <CreateAccount setUser={setUser} /> } />
-//           <Route path="/login" element={ <LoginForm setUser={setUser} /> } />
-//         </Routes>
-//       )}
-//     </Wrapper>
-//   </div>
-//   );
-//   }
-
-// export default App;
