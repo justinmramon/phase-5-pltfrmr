@@ -1,5 +1,5 @@
 class PlaylistGameSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :game_id
   has_one :game
   has_one :playlist
 end

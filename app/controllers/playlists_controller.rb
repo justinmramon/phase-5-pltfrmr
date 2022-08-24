@@ -6,7 +6,7 @@ class PlaylistsController < ApplicationController
     end
 
     def show
-      render json: @playlist
+        render json: @playlist
     end
 
     def create
