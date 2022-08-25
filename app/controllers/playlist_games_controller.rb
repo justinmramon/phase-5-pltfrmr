@@ -1,17 +1,22 @@
 class PlaylistGamesController < ApplicationController
+    skip_before_action :authorize
 
     def index
-        render json: PlaylistGames.all
+        render json: PlaylistGame.all
+    end
+
+    def show
+        render json: @playlist_game
     end
 
     def create
-        playlist_game = PlaylistGames.create!(playlistgames_params)
+        playlist_game = PlaylistGame.create!(playlistgames_params)
         render json: playlist_game, status: :created
     end
 
     private
     def set_playlistgames
-        @playlistgames = PlaylistGames.find(params[:id])
+        @playlist_game = PlaylistGame.find(params[:id])
     end
   
   

@@ -21,18 +21,17 @@ function Home({ user }) {
             body: JSON.stringify(playlistData)
         })
         e.target.reset()
-        console.log(playlistData)
     }
     
     return(
         <div>
             <form onSubmit={ handleSubmit }>
                 <label>Member ID</label>
-                <input type="text" name="member-id" placeholder={ user.id } />
+                <input type="text" name="member-id" placeholder={ user.id } autoComplete="off" />
                 <label>Playlist Name</label>
-                <input type="text" name="playlist-name" placeholder="Playlist Name" onChange={ (e) => setPlaylistName(e.target.value) } />
+                <input type="text" name="playlist-name" placeholder="Playlist Name" autoComplete="off" onChange={ (e) => setPlaylistName(e.target.value) } />
                 <label>Playlist Description</label>
-                <input type="text" name="playlist-description" placeholder="Playlist Description" onChange={ (e) => setPlaylistDescription(e.target.value) } />
+                <input type="text" name="playlist-description" placeholder="Playlist Description" autoComplete="off" onChange={ (e) => setPlaylistDescription(e.target.value) } />
                 <button type="submit">Submit</button>
             </form>
         </div>
