@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import GamesCard from "./GamesCard"
+import GamesCard from "./GamesCard";
+import PlaylistGames from "./PlaylistGames";
 
-function PlaylistPage({ playlist_game }){
+function PlaylistPage({ user, playlist_game }){
     const [games, setGames] = useState([]);
 
     useEffect(() => {
@@ -15,7 +16,7 @@ function PlaylistPage({ playlist_game }){
     return(
         <ul>
             {gameToDisplay.map(game => (
-                <GamesCard game={ game } />
+                <PlaylistGames user={ user } game={ game } />
             ))}
         </ul>
     )

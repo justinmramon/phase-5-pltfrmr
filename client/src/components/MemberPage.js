@@ -16,7 +16,7 @@ function MemberPage({ user, userList }){
         <div>
             <h2>Member Page</h2>
                 {playlists.map((playlist) => (
-                     playlist.user.username === currentMember[2] ? <Playlist playlist={playlist} /> : null 
+                     playlist.user.username === currentMember[2] ? <Playlist user={ user } playlist={playlist} /> : null 
                 ))}
         </div>
     )

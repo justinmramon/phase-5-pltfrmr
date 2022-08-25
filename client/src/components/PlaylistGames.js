@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 
-function GamesCard({ user, game }){
+function PlaylistGames({ user, game }){
 
     // function handlePlaylistAdd(){
     //     fetch('/playlist_games', {
@@ -36,4 +36,4 @@ function GamesCard({ user, game }){
     )
 }
 
-export default GamesCard;
+export default PlaylistGames;
