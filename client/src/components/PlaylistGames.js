@@ -24,6 +24,7 @@ function PlaylistGames({ user, game }){
                     <form>
                         <label for="playlist">Add to Playlist</label> 
                         <select name="playlist">
+                        <option>Please Select a Playlist</option>
                             {user?.playlists.map(playlist => {
                                 return <option>{ playlist.title ? playlist.title : "NO PLAYLIST TITLE FOUND" }</option>
                             })}
