@@ -6,13 +6,13 @@ function Playlist ({ playlist }) {
     const [showGames, setShowGames] = useState(false);
 
     return(
-        <li>
-            <li onClick={() => setShowGames(!showGames)}>{playlist.user.username}</li>
+        <div>
+            <li onClick={() => setShowGames(!showGames)}>{!playlist.title ? "No Title" : playlist.title}</li>
             {showGames ? 
             playlist.playlist_games.map(playlist_game => (
                 <PlaylistPage playlist_game={playlist_game} /> )) : 
             <></>}
-        </li>
+        </div>
 
     )
 }

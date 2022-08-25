@@ -29,7 +29,7 @@ class PlaylistsController < ApplicationController
 
 
     def playlist_params
-      params.permit(:user_id, :game_id)
+      params.permit(:user_id, :title, :description)
     end
     
 end

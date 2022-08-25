@@ -1,21 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import Playlist from "./Playlist";
+import { Link } from 'react-router-dom';
 
-function UserList({ user }){
-    const [playlists, setPlaylists] = useState([])
+function UserList({ user, userList }){
 
-    useEffect(() => {
-        fetch('/playlists')
-        .then((response) => response.json())
-        .then((data) => setPlaylists(data))
-    }, [])
 
     return(
         <ul>
-            {playlists.map(playlist => (
-                <li>
-                   <Playlist key={playlist.id} playlist={playlist}/> 
-                </li>
+            {userList.map(userData => (
+                <Link to={`/users/${userData.username}`}>
+                    <li>
+                        { userData.username } 
+                    </li>
+                </Link>
             ))}
         </ul>
     )

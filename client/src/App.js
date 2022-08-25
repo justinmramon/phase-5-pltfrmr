@@ -5,10 +5,13 @@ import Games from "./components/Games";
 import GamesPage from "./components/GamesPage";
 import UserList from "./components/UserList";
 import Home from "./components/Home";
+import MemberPage from "./components/MemberPage";
 import { Router, Routes, Route } from 'react-router-dom';
 
 function App() {
   const [user, setUser] = useState(null);
+  const [userList, setUserList] = useState([])
+  const [playlists, setPlaylists] = useState([])
 
   useEffect(() => {
     // auto-login
@@ -19,6 +22,18 @@ function App() {
     });
   }, []);
 
+  useEffect(() => {
+    fetch('/playlists')
+    .then((response) => response.json())
+    .then((data) => setPlaylists(data))
+  }, [])
+
+  useEffect(() => {
+      fetch('/users')
+      .then((response) => response.json())
+      .then((data) => setUserList(data))
+  }, [])
+
   if (!user) return <Login onLogin={setUser} />;
 
   return (
@@ -27,9 +42,10 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={ <Home user={ user } /> } />
-          <Route path="/games" element={ <Games user={ user } /> } />
+          <Route path="/games" element={ <Games playlists={ playlists } userList={ userList } user={ user } /> } />
           <Route path="/games/:id" element={ <GamesPage user={ user } /> } />
-          <Route path="/users" element={ <UserList user={ user } /> } />
+          <Route path="/users" element={ <UserList userList={ userList } user={ user } /> } />
+          <Route path="/users/:id" element={ <MemberPage userList={ userList } user={ user } /> } />
         </Routes>
       </main>
     </>
