@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import GamesCard from './GamesCard';
 
-function Games(){
+function Games({ user, userList, playlists }){
     const [games, setGames] = useState([])
 
     useEffect(() => {
@@ -14,7 +14,7 @@ function Games(){
         <div className=''>
             <div className=''>
                 {games.map((game) => {
-                    return <GamesCard key={game.id} game={ game } />
+                    return <GamesCard playlists={ playlists } user={ user } key={game.id} game={ game } />
                 })}
             </div>
         </div>

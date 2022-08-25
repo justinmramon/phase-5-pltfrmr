@@ -1,24 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 function Home({ user }) {
+    const [playlistName, setPlaylistName] = useState("")
+    const [playlistDescription, setPlaylistDescription] = useState("")
 
 
     function handleSubmit(e){
         e.preventDefault()
         let playlistData = {
             user_id: user.id,
-            title: e.target[1].value,
-            description: e.target[2].value
+            title: playlistName,
+            description: playlistDescription
         }
         fetch('/playlists', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",  
+                "Accept": "application/json"
             },
             body: JSON.stringify(playlistData)
         })
         e.target.reset()
-        console.log(e)
+        console.log(playlistData)
     }
     
     return(
@@ -27,9 +30,9 @@ function Home({ user }) {
                 <label>Member ID</label>
                 <input type="text" name="member-id" placeholder={ user.id } />
                 <label>Playlist Name</label>
-                <input type="text" name="playlist-name" placeholder="Playlist Name" />
+                <input type="text" name="playlist-name" placeholder="Playlist Name" onChange={ (e) => setPlaylistName(e.target.value) } />
                 <label>Playlist Description</label>
-                <input type="text" name="playlist-description" placeholder="Playlist Description" />
+                <input type="text" name="playlist-description" placeholder="Playlist Description" onChange={ (e) => setPlaylistDescription(e.target.value) } />
                 <button type="submit">Submit</button>
             </form>
         </div>

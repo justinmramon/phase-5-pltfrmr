@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 
-function GamesCard({ game }){
+function GamesCard({ user, game, playlists }){
 
     // function handlePlaylistAdd(){
     //     fetch('/playlist_games', {
@@ -19,9 +19,16 @@ function GamesCard({ game }){
     
 
     return (
-                <div className='' >
+                <div>
                     <h1>{ game.title }</h1>
-                    <button >Add to My Playlist</button>
+                    <form>
+                        <label for="playlist">Add to Playlist</label> 
+                        {/* <select name="playlist">
+                            {user.playlists?.map(playlist => {
+                                <option text={!playlist.title ? "null" : playlist.title}></option>
+                            })}
+                        </select> */}
+                    </form>
                     <Link to={`/games/${game.id}`}>
                         <img className='' src={ game.image } alt='' />
                     </Link>
