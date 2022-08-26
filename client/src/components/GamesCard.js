@@ -10,7 +10,7 @@ function GamesCard({ user, game }){
         fetch('/playlist_games', {
             method: "POST",
             headers: {
-                "Content-Type": "application/json",  
+                "Content-Type": "application/json",
             },
             body: JSON.stringify({
                 playlist_id: playlist,
@@ -19,12 +19,6 @@ function GamesCard({ user, game }){
         })
     }
 
-    // useEffect(() => {
-    //     fetch('/playlist_games')
-    //     .then(response => response.json())
-    //     .then(data => setPlaylistGames(...playlist, data))
-    // },[])
-    
 
     return (
                 <div>
