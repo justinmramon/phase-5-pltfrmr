@@ -53,6 +53,11 @@ function GamesPage({ user }){
         <div>
             <div>
                 <h1 className='text-4xl font-bold'> { oneGame.title } </h1>
+                <img src={ oneGame.image } />
+                <h1 className='text-2xl font-bold'>Genre: { oneGame.genre }</h1>
+                <h1 className='text-2xl font-bold'>Metacritic Score: { oneGame.metacritic }</h1>
+                <h1 className='text-2xl font-bold'>Playtime: { oneGame.playtime } hours</h1>
+                <h1 className='text-2xl font-bold'>Release Date: { oneGame.released }</h1>
                     <form onSubmit={ handleSubmit }>
                         <label>Leave A Comment</label>
                         <input onChange={ handleChange } type='text'></input>
