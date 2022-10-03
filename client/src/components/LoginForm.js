@@ -30,6 +30,8 @@ function LoginForm({ onLogin }) {
     return (
       <form onSubmit={handleSubmit}>
         <div>
+          <div className='grid grid-cols-1 sm:grid-cols-2'>
+          </div>
           <label htmlFor="username">Username</label>
           <input
             type="text"
