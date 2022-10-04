@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import createAccountImage from '../assets/login failed option 2.jpeg'
 
-function SignUpForm({ onLogin }) {
+function SignUpForm({ setShowLogin, onLogin }) {
     const [email, setEmail] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -35,55 +34,68 @@ function SignUpForm({ onLogin }) {
     }
   
     return (
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="email">Email</label>
-          <input
-            type="text"
-            id="email"
-            value={ email }
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-        <div>
-          <label htmlFor="username">Username</label>
-          <input
-            type="text"
-            id="username"
-            autoComplete="off"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            autoComplete="current-password"
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Password Confirmation</label>
-          <input
-            type="password"
-            id="password_confirmation"
-            value={passwordConfirmation}
-            onChange={(e) => setPasswordConfirmation(e.target.value)}
-            autoComplete="current-password"
-          />
-        </div>
-        <div>
-          <button type="submit">{isLoading ? "Loading..." : "Sign Up"}</button>
-        </div>
-        <div>
-          {errors.map((err) => (
-            <div key={err}>{err}</div>
-          ))}
-        </div>
-      </form>
+      <div className='bg-gray-800 flex flex-col justify-center'>
+        <form className='max-w-[400px] w-full mx-auto bg-gray-900 p-8 px-8 rounded-lg' onSubmit={handleSubmit}>
+        <h2 className='text-4xl dark:text-white font-bold text-center'>Create Account</h2>
+          <div className='flex flex-col text-gray-300 py-2'>
+            <label htmlFor="email">Email</label>
+            <input
+              type="text"
+              id="email"
+              value={ email }
+              onChange={(e) => setEmail(e.target.value)}
+              className='rounded-lg bg-gray-700 mt-2 p-2 focus:border-blue-600 focus:bg-gray-800 focus:outline-none' 
+            />
+          </div>
+          <div className='flex flex-col text-gray-300 py-2'>
+            <label htmlFor="username">Username</label>
+            <input
+              type="text"
+              id="username"
+              autoComplete="off"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              className='rounded-lg bg-gray-700 mt-2 p-2 focus:border-blue-600 focus:bg-gray-800 focus:outline-none' 
+            />
+          </div>
+          <div className='flex flex-col text-gray-300 py-2'>
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              autoComplete="current-password"
+              className='rounded-lg bg-gray-700 mt-2 p-2 focus:border-blue-600 focus:bg-gray-800 focus:outline-none' 
+            />
+          </div>
+          <div className='flex flex-col text-gray-300 py-2'>
+            <label htmlFor="password">Password Confirmation</label>
+            <input
+              type="password"
+              id="password_confirmation"
+              value={passwordConfirmation}
+              onChange={(e) => setPasswordConfirmation(e.target.value)}
+              autoComplete="current-password"
+              className='rounded-lg bg-gray-700 mt-2 p-2 focus:border-blue-600 focus:bg-gray-800 focus:outline-none' 
+            />
+          </div>
+          <div>
+            <button className='w-full my-5 py-2 bg-cyan-400 shadow-lg shadow-cyan-400/50 hover:shadow-teal-500/40 text-white font-semibold rounded-lg' type="submit">{isLoading ? "Loading..." : "Sign Up"}</button>
+          </div>
+          <div className='flex justify-between text-gray-400 py-2'>
+            <p className='flex items-center'>
+              Already have an account? &nbsp;
+              <button color="secondary" onClick={() => setShowLogin(true)}>Log In</button>
+            </p>
+          </div>
+          <div>
+            {errors.map((err) => (
+              <div key={err}>{err}</div>
+            ))}
+          </div>
+        </form>
+      </div>
     );
   }
   
