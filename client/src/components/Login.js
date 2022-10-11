@@ -1,7 +1,7 @@
 import { useState } from "react";
 import LoginForm from "./LoginForm";
 import CreateAccount from "./CreateAccount";
-import createAccountImage from '../assets/login failed option 2.jpeg';
+import createAccountImage from '../assets/login image option 3.jpeg';
 
 function Login({ onLogin }) {
   const [showLogin, setShowLogin] = useState(true);
